@@ -1,79 +1,107 @@
 # Project 1 README
 
-Student: Full Name (123456789)
+**Student:** Saisidharth Mannava (920691968)
+
+---
 
 ## Project Status
-This the current status of the project ...
+The project currently has working implementations for all three problems. Each circuit was built and tested in **Logisim Evolution** using various combinations of inputs to ensure correctness.
+
+---
+
+## Problem 1: Comparator Circuits
+
+I created two separate circuits:
+1. **X = Y Circuit** – Output `N` is true when `X` equals `Y`.
+2. **X < Y Circuit** – Output `E` is true when `X` is less than `Y`.
+
+### X = Y Circuit
+- **Inputs:** `X2`, `X1`, `X0`, `Y2`, `Y1`, `Y0`  
+- **Output:** `N` (true if equal)  
+- **Implementation:**
+  - Used three **XNOR** gates to compare each bit of `X` and `Y`.
+  - Fed the XNOR outputs into a **three-input AND** gate so all bits must match.
+
+### X < Y Circuit
+- **Inputs:** same as above  
+- **Output:** `E` (true if less than)  
+- **Implementation:**
+  - Used **NOT**, **XNOR**, and **AND** gates.
+  - Finalized after office hours discussion with the professor.
+  - Verified with multiple input combinations.
+
+---
+
+## Problem 2: 4-bit Binary to Gray Code Converter
+
+- My SID’s last digit is **8**, so I used the corresponding Gray code values in column 8.
+- **Steps:**
+  1. Created a **truth table** with 4 binary input bits.
+  2. Retrieved the Gray codes for SID ending in 8.
+  3. Built **4-variable K-maps** for each Gray code output (`G0`, `G1`, `G2`, `G3`).
+  4. Derived **simplified boolean equations** from each K-map.
+  5. Implemented the circuits in Logisim using **AND**, **NAND**, and **OR** gates.
+  6. Tested all table inputs to verify outputs.
+
+---
+
+## Problem 3: 7-Segment Display Decoder
+
+This problem was the most challenging. After attending office hours, I treated the **vertical bar** input as a **don’t care**.
+
+- **Inputs:**
+  - 3 variables for vertical bars
+  - 1 variable for horizontal bar
+- **Outputs:** `A`, `B`, `C`, `D`, `E`, `F`, `G` (segment enables)
+- **Process:**
+  1. Populated a truth table for the required 7-segment patterns.
+  2. Defined two input sets in Logisim (vertical vs. horizontal).
+  3. Built the decoder from the truth table.
+  4. Tested all combinations to confirm correct segment activation.
+
+---
 
 ## Known Issues
-The project fails to function properly in ...
+- In early iterations, the **X < Y** circuit had logic conflicts due to misused NOT gates. Fixed after debugging with the professor.
+- The **7-segment decoder** was initially incorrect because the vertical bar wasn’t treated as a don’t care value.
+
+---
 
 ## References
-* [Build an XOR gate from AND/NOT](https://electronics.stackexchange.com/questions/487529/build-an-xor-gate-from-and-not)
-* [Some other link](https://stackoverflow.com)
+- [Build an XOR gate from AND/NOT](https://electronics.stackexchange.com/questions/487529/build-an-xor-gate-from-and-not)
+- [Some other link](https://stackoverflow.com)
+- Course Textbook
+- YouTube – K-map tutorials
+- YouTube – 5-segment and 7-segment display tutorials
+- YouTube – Logisim tutorials
+
+---
 
 ## Generative AI Use
-I used ChatGPT for Prompt 1, and ZZZZZ for Prompt 2....
 
 ### Prompt 1
-How do you create an XOR from only and/or/not gates?
+**Question:** How do you create an XOR from only AND/OR/NOT gates?
 
-### Response 1
-To create an XOR (exclusive OR) gate using only AND, OR, and NOT gates, you can follow these steps. The XOR gate outputs true only when the inputs are different.
+**Response:**  
+The XOR gate outputs true only when inputs differ. Boolean expression:  
+`A XOR B = (A AND NOT B) OR (NOT A AND B)`
 
-The truth table for XOR is:
+**Steps:**
+1. Create `NOT(A)` and `NOT(B)`.
+2. Compute `A AND NOT(B)` and `NOT(A) AND B`.
+3. OR the results to get XOR.
 
-| A | B | A XOR B |
-|---|---|---------|
-| 0 | 0 |    0    |
-| 0 | 1 |    1    |
-| 1 | 0 |    1    |
-| 1 | 1 |    0    |
+**Changes Made:**  
+Needed **XNOR**, so I applied NOT to the XOR output:  
+`XNOR(A, B) = NOT( (A AND NOT B) OR (NOT A AND B) )`
 
-The Boolean expression for XOR can be derived as:\
-A &oplus; B = (A &and; &not; B) &or; (&not; A &and; B)
-
-This can be broken down into the following steps:
-
-1. Create \(&not; A\) and \(&not; B\) using NOT gates.
-1. Create \(A &and; &not; B\) and \(&not; A &and; B\) using AND gates.
-1. Combine the results of the two AND gates using an OR gate.
-
-Here is the step-by-step logic construction:
-
-1. **NOT gates** to get \(&not; A\) and \(&not; B\):\
-   NOT(A) &rarr; &not; A\
-   NOT(B) &rarr; &not; B
-
-1. **AND gates** to get \(A &and; &not; B\) and \(&not; A &and; B\):\
-   A &and; &not; B &rarr; AND(A, &not; B)\
-   &not; A &and; B &rarr; AND(&not; A, B)
-
-1. **OR gate** to get the final result:\
-   (A &and; &not; B) &or; (&not; A &and; B) &rarr; OR(AND(A, &not; B), AND(&not; A, B))
-
-Putting it all together in a circuit diagram:
-
-1. Input \(A\) goes to a NOT gate to produce \(&not; A\).
-1. Input \(B\) goes to a NOT gate to produce \(&not; B\).
-1. Input \(A\) and the output of the NOT gate for \(B\) go to an AND gate to produce \(A &and; &not; B\).
-1. Input \(B\) and the output of the NOT gate for \(A\) go to an AND gate to produce \(&not; A &and; B\).
-1. The outputs of the two AND gates go to an OR gate to produce the final output \(A &oplus; B\).
-
-In terms of Boolean logic:\
-XOR(A, B) = \(A &and; &not; B\) &or; \(&not; A &and; B\) 
-
-This way, you have constructed an XOR gate using only AND, OR, and NOT gates.
-
-### Changes 1
-I needed XNOR, so changed it to:\
-&not;\(\(A &and; &not; B\) &or; \(&not; A &and; B\)\)
+---
 
 ### Prompt 2
 My other prompt...
 
-### Response 2
+**Response:**  
 The other response...
 
-### Changes 2
+**Changes Made:**  
 The other changes made...
