@@ -69,8 +69,8 @@ This problem was the most challenging. After attending office hours, I treated t
 
 ## References
 - Course Textbook
-- [K-Maps](https://www.youtube.com/watch?v=H4FkpBAK2Wk)
+- K-Maps - (https://www.youtube.com/watch?v=H4FkpBAK2Wk)
 - 5-segment and 7-segment display tutorial - (https://www.youtube.com/watch?v=H4FkpBAK2Wk&t=36s)
-- Logisim tutorial - (
+- Logisim tutorial - (https://www.youtube.com/watch?v=Dp32ur04XcQ&list=PLFnx8Vsp0KYkhig6WCHnU-kt-1bugtl7e)
 
 ---
