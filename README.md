@@ -27,7 +27,7 @@ I created two separate circuits:
 - **Output:** `E` (true if less than)  
 - **Implementation:**
   - Used **NOT**, **XNOR**, and **AND** gates.
-  - Finalized after office hours discussion with the professor.
+  - Cross-checked in discussion with the professor.
   - Verified with multiple input combinations.
 
 ---
