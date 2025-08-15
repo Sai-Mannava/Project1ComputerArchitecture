@@ -68,10 +68,8 @@ This problem was the most challenging. After attending office hours, I treated t
 ---
 
 ## References
-- [Build an XOR gate from AND/NOT](https://electronics.stackexchange.com/questions/487529/build-an-xor-gate-from-and-not)
-- [Some other link](https://stackoverflow.com)
 - Course Textbook
-- YouTube – K-map tutorials
+- YouTube – (https://www.youtube.com/watch?v=RO5alU6PpSU&t=12s)
 - YouTube – 5-segment and 7-segment display tutorials
 - YouTube – Logisim tutorials
 
